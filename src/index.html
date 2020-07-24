@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Vue Todo App</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="css/nvk.css">
+    </head>
+    <body>
+
+        <div class="container t-white light-green t-center">
+            <h1 class="tb-margin-m">Vue Todo App</h1>
+        </div>
+        <div id="todo-app" class="panel">
+            <div class="panel">
+                <div class="container-thicker">
+                    <input autofocus
+                    class="border-blue s-center" 
+                    type="text" 
+                    v-on:keyup.enter="addTodo" 
+                    v-model="newTodo" 
+                    style="font-size: larger;"
+                    placeholder="Write a nue TODO">
+                </div>
+                <div class="container t-center">
+                    <small>
+                        <input type="checkbox" v-model="saveTodosInBrowser" id="save-todos-checkbox">
+                        <label for="save-todos-checkbox" class="t-gray">Save in this browser?</label>
+                    </small>
+                </div>
+            </div>
+            <hr class="border">
+            <div class="panel-thicker">
+                <div class="container-thicker">
+                    <ul class="list">
+                        <li class="list-header light-green t-white t-center">TODO List</li>
+                        <li v-for="todo in todos"
+                        v-bind:key="todo.id"
+                        class="list-item"
+                        v-bind:id="todoId(todo.id)"
+                        v-bind:title="todoTitle(todo.done)"
+                        >
+                            {{ todo.text }}
+                            <div class="note black">
+                                <a v-on:click.prevent="todoCompleted(todo.id)" 
+                                title="Toggle Completed/Uncompleted" 
+                                class="t-white"
+                                ><i class="fas fa-check"></i></a>
+                                <a v-on:click.prevent="editTodo(todo.id)" 
+                                title="Edit" 
+                                class="t-white"
+                                ><i class="fas fa-edit"></i></a>
+                                <a v-on:click.prevent="removeTodo(todo.id)" 
+                                title="Remove" 
+                                class="t-white"
+                                ><i class="fas fa-trash"></i></a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <script type="text/javascript" src="js/vendor/pouchdb-7.1.1.min.js"></script>
+        <script type="text/javascript" src="js/vendor/all.min.js"></script>
+        <script type="text/javascript" src="js/vendor/vue.min.js"></script>
+        <script type="text/javascript" src="js/todo-app.js"></script>
+    </body>
+</html>
