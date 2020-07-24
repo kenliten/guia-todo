@@ -1,0 +1,32 @@
+{
+  "name": "guia-todo",
+  "title": "Guía TODO",
+  "version": "1.0.0",
+  "description": "A simple vue.js/PouchDB based todo app",
+  "main": "index.js",
+  "scripts": {
+    "serve": "http-server ./src -d -i -c-1",
+    "start": "electron .",
+    "package:win": "electron-packager . --overwrite --platform=win32 --arch=ia32 --out=dist",
+    "package:win64": "electron-packager . --overwrite --platform=win32 --arch=x64 --out=dist",
+    "package:linux": "electron-packager . --overwrite --platform=linux --arch=ia32 --out=dist",
+    "package:linux64": "electron-packager . --overwrite --platform=linux --arch=x64 --out=dist",
+    "package:mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --out=dist --osx-sign.identity='Developer ID Application: GitHub'"
+  },
+  "keywords": [
+    "TODO",
+    "vue",
+    "electron"
+  ],
+  "author": "kenliten",
+  "license": "BSD-3-Clause",
+  "repository": "https://github.com/kenliten/guia-todo",
+  "readme": "https://github.com/kenliten/guia-todo/blob/master/README.md",
+  "devDependencies": {
+    "electron": "^9.1.1"
+  },
+  "dependencies": {
+    "electron-packager": "^15.0.0",
+    "http-server": "^0.12.3"
+  }
+}
