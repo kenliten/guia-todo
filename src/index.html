@@ -1,19 +1,25 @@
 <!doctype html>
 <html>
     <head>
-        <title>Vue Todo App</title>
+        <title>Guia TODO by kenliten</title>
         <meta charset="utf-8">
+        <!-- viewport, just for better css sizing -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- a tiny, personal, and unfinished css framework -->
         <link rel="stylesheet" href="css/nvk.css">
+        <meta name="author" content="kenliten">
     </head>
     <body>
 
+        <!-- A big title -->
         <div class="container t-white light-green t-center">
-            <h1 class="tb-margin-m">Vue Todo App</h1>
+            <h1 class="tb-margin-m">Guia TODO</h1>
         </div>
+        <!-- the app root -->
         <div id="todo-app" class="panel">
             <div class="panel">
                 <div class="container-thicker">
+                    <!-- the text input to set new todos -->
                     <input autofocus
                     class="border-blue s-center" 
                     type="text" 
@@ -24,8 +30,9 @@
                 </div>
                 <div class="container t-center">
                     <small>
+                        <!-- a checkbox to control if save tha data using PouchDB -->
                         <input type="checkbox" v-model="saveTodosInBrowser" id="save-todos-checkbox">
-                        <label for="save-todos-checkbox" class="t-gray">Save in this browser?</label>
+                        <label for="save-todos-checkbox" class="t-gray">Save for later?</label>
                     </small>
                 </div>
             </div>
@@ -33,7 +40,9 @@
             <div class="panel-thicker">
                 <div class="container-thicker">
                     <ul class="list">
+                        <!-- a title for the list -->
                         <li class="list-header light-green t-white t-center">TODO List</li>
+                        <!-- todo list generated using the v-for loop -->
                         <li v-for="todo in todos"
                         v-bind:key="todo.id"
                         class="list-item"
@@ -41,6 +50,7 @@
                         v-bind:title="todoTitle(todo.done)"
                         >
                             {{ todo.text }}
+                            <!-- todo controls -->
                             <div class="note black">
                                 <a v-on:click.prevent="todoCompleted(todo.id)" 
                                 title="Toggle Completed/Uncompleted" 
@@ -61,9 +71,13 @@
             </div>
         </div>
 
+        <!-- PouchDB -->
         <script type="text/javascript" src="js/vendor/pouchdb-7.1.1.min.js"></script>
+        <!-- FontAwesome -->
         <script type="text/javascript" src="js/vendor/all.min.js"></script>
+        <!-- Vue.js -->
         <script type="text/javascript" src="js/vendor/vue.min.js"></script>
-        <script type="text/javascript" src="js/todo-app.js"></script>
+        <!-- Guia Todo App -->
+        <script type="text/javascript" src="js/todo-app.min.js"></script>
     </body>
 </html>
