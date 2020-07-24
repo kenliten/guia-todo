@@ -1,7 +1,7 @@
 {
   "name": "guia-todo",
   "title": "Guía TODO",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A simple vue.js/PouchDB based todo app",
   "main": "index.js",
   "scripts": {
