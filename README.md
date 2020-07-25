@@ -12,4 +12,4 @@ A simple vue.js/PouchDB based todo app
 </ol>
 
 # Download a working (package) version
-Soon
+Go to the <a href="https://github.com/kenliten/guia-todo/releases">releases</a> section.
