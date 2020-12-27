@@ -1,13 +1,7 @@
-;// this first semicolon is to prevent an error 
-// the code is inside an auto called expression, this ensure our code will run
-(function(){
-    // the following directive is to tell the browser that we want to use the JavaScript's strict mode
+;(function(){
     'use strict';
-    // (in the code before this could be a line without it)
-    // the database to hold the data if checkbox control is checked
     var store = new PouchDB('todos');
 
-    // the app instance
     var todoApp = new Vue({
         // The element which hold the app
         el: '#todo-app',
@@ -15,6 +9,8 @@
             return {
                 // a variable to hold the new todo text
                 newTodo: '',
+                target: 0,
+                newText: '',
                 // variable which define if save the todos data
                 saveTodosInBrowser: false,
                 // the todos array
@@ -22,14 +18,14 @@
             }
         },
         methods: {
-            // add todo method 
+            // add todo method
             // the fallowing declaration is exactly the same:
             // addTodo: async function(){
             async addTodo(){
                 // create an id based in the last id in the array
                 let id = this.todos.length == 0 ? 1 : this.todos[this.todos.length - 1].id + 1;
 
-                // the todo object, just two times the same id 
+                // the todo object, just two times the same id
                 // (_id to save in the PouchDB database and id to sort and manage the object inside the array),
                 // text (body) of the todo, and
                 // done to define if is done or not
@@ -138,15 +134,17 @@
                     });;
                 }
             },
+            openTodoEditor(id) {
+                this.target = id;
+                document.querySelector('#prompt').style.display = 'block';
+            },
             // the todo editor method
             async editTodo(id){
-                // this open a prompt (can be replace with a modal box, but 
-                // it means that will be needed other method to success)
-                let newText = prompt('Write the new content to the TODO');
-                // now we take that value and change the todo's text with it
+                document.querySelector('#prompt').style.display = 'none';
+                let text = this.newText;
                 this.todos.forEach(function(todo){
                     if (todo.id == id){
-                        todo.text = newText;
+                        todo.text = text;
                     }
                 });
 

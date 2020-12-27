@@ -1,0 +1,30 @@
+#prompt {
+  background: rgba(97, 97, 97, .6);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+}
+
+#editor {
+  background: #E0E0E0;
+  padding: 16px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40%;
+}
+
+#editor h3 {
+  text-align: center;
+  border-bottom: 1px solid #616161;
+}
+
+#editor button {
+  padding: 12px 24px;
+  background: #388E3C;
+  color: #f8f8f8;
+}

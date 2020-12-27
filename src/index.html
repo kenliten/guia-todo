@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- a tiny, personal, and unfinished css framework -->
         <link rel="stylesheet" href="css/nvk.min.css">
+        <link rel="stylesheet" type="text/css" href="./css/master.css">
         <meta name="author" content="kenliten">
     </head>
     <body>
@@ -21,10 +22,10 @@
                 <div class="container-thicker">
                     <!-- the text input to set new todos -->
                     <input autofocus
-                    class="border-blue s-center" 
-                    type="text" 
-                    v-on:keyup.enter="addTodo" 
-                    v-model="newTodo" 
+                    class="border-blue s-center"
+                    type="text"
+                    v-on:keyup.enter="addTodo"
+                    v-model="newTodo"
                     style="font-size: larger;"
                     placeholder="Write a nue TODO">
                 </div>
@@ -40,9 +41,7 @@
             <div class="panel-thicker">
                 <div class="container-thicker">
                     <ul class="list">
-                        <!-- a title for the list -->
                         <li class="list-header light-green t-white t-center">TODO List</li>
-                        <!-- todo list generated using the v-for loop -->
                         <li v-for="todo in todos"
                         v-bind:key="todo.id"
                         class="list-item"
@@ -52,21 +51,33 @@
                             {{ todo.text }}
                             <!-- todo controls -->
                             <div class="note black">
-                                <a v-on:click.prevent="todoCompleted(todo.id)" 
-                                title="Toggle Completed/Uncompleted" 
+                                <a v-on:click.prevent="todoCompleted(todo.id)"
+                                title="Toggle Completed/Uncompleted"
                                 class="t-white"
                                 ><i class="fas fa-check"></i></a>
-                                <a v-on:click.prevent="editTodo(todo.id)" 
-                                title="Edit" 
+                                <a v-on:click.prevent="openTodoEditor(todo.id)"
+                                title="Edit"
                                 class="t-white"
                                 ><i class="fas fa-edit"></i></a>
-                                <a v-on:click.prevent="removeTodo(todo.id)" 
-                                title="Remove" 
+                                <a v-on:click.prevent="removeTodo(todo.id)"
+                                title="Remove"
                                 class="t-white"
                                 ><i class="fas fa-trash"></i></a>
                             </div>
                         </li>
                     </ul>
+                </div>
+            </div>
+            <div id="prompt">
+                <div id="editor">
+                    <h3>Edit this todo</h3>
+                    <div class="panel">
+                        <label for="new-text">New title:</label><br>
+                        <input type="text" id="new-text" v-model="newText">
+                    </div>
+                    <div class="panel">
+                        <button v-on:click.prevent="editTodo(target)">Save</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,6 +89,6 @@
         <!-- Vue.js -->
         <script type="text/javascript" src="js/vendor/vue.min.js"></script>
         <!-- Guia Todo App -->
-        <script type="text/javascript" src="js/todo-app.min.js"></script>
+        <script type="text/javascript" src="js/todo-app.js"></script>
     </body>
 </html>
